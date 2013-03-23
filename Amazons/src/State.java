@@ -1,8 +1,17 @@
 import java.util.ArrayList;
 
 
+	/**
+	 *  board has been renamed to locations
+	 *  It now stores 3 values: starting position of a piece, location it moved to,
+	 *  and location arrow was fired
+	 *  STARTING	[x][y]
+	 *  NEW			[x][y]
+	 *  ARROW		[x][y]
+	 * */
+
 public class State{
-	private char[][] board;
+	private char[][] locations;
 	private char player;
 	private State parent;
 	private int value = Integer.MAX_VALUE;
@@ -10,32 +19,21 @@ public class State{
 	
 	public State(char player){
 		this.player = player;
-		this.board = new char[10][10];
+		this.locations = new char[3][3];
 		this.children = new ArrayList<State>();
 	}
 	
-	public State(char[][] board){
-		this.board = board;
+	public State(char[][] loc){
+		this.locations = loc;
 		this.children = new ArrayList<State>();
 	}
 	
-	public void setBoard(char[][] board){
-		this.board = board;
+	public void setLoc(char[][] loc){
+		this.locations = loc;
 	}
 	
-	public void initBoard(){
-		for(int i=0;i<10;i++){
-			for(int j=0;j<10;j++){
-				board[i][j] = 'S';
-			}
-		}
-		board[3][0] = board[0][3] = board[0][6] = board[3][9] = 'B';
-		board[6][0] = board[9][3] = board[9][6] = board[6][9] = 'W';
-		printBoard();
-	}
-	
-	public char[][] getBoard(){
-		return board;
+	public char[][] getLoc(){
+		return locations;
 	}
 
 	public State getParent() {
@@ -56,16 +54,6 @@ public class State{
 	
 	public void addChild(State state){
 		this.children.add(state);
-	}
-	
-	public void printBoard(){
-		System.out.print("Current gameboard state: \n");
-		for(int i=0;i<10;i++){
-			for(int j=0;j<10;j++){
-				System.out.print(this.board[i][j]+"\t");
-			}
-			System.out.print("\n");
-		}
 	}
 
 	public char getPlayer() {
