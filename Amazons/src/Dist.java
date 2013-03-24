@@ -1,3 +1,4 @@
+package src;
 import java.util.ArrayList;
 
 public class Dist {
@@ -284,7 +285,6 @@ public class Dist {
 				{ 'A', 'A', 'A', 'W', 'A', 'A', 'B', 'A', 'A', 'S' },
 				{ 'A', 'S', 'B', 'A', 'S', 'A', 'A', 'S', 'S', 'W' }, };
 		System.out.println(squaresOwned(arr,'W'));
-		ArrayList<char[][]> arrZ = success(arr, 'W'); //WHAT DOES THIS DO?
 		int[][] arrr=distanceTo(arr,'W');
 		for(int i=0;i<10;i++){
 			for(int j=0;j<10;j++){

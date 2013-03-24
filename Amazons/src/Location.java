@@ -1,3 +1,4 @@
+package src;
 public class Location {
 	int x, y;
 
