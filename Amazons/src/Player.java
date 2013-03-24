@@ -8,7 +8,7 @@ public class Player {
 		
 		long timer = System.currentTimeMillis();
 
-		State root = new State();
+		State root = new State(); // current state of game (should change turn by turn
 		/*
 		char lateBoard[][] = { 
 				{ 'S', 'S', 'S', 'S', 'S', 'A', 'A', 'S', 'S', 'S' },
@@ -23,12 +23,18 @@ public class Player {
 				{ 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S', 'S' } };
 		root.setBoard(lateBoard);
 		*/
-		root.initBoard();
-		root.setPlayer('B');
-
-		Minimax.startTimer();
-		State s = Minimax.miniMax(root, 'B', 'W');
 		
+		root.initBoard(); // set up for beginning of game
+		root.setPlayer('B'); // setting the player of this state to black means white goes next
+
+		Minimax.startTimer(); // Begin timer to detect cutoff
+		State s = Minimax.miniMax(root, 'B', 'W'); // returns state representing the best move to make
+		int[][] moveToMake = Successor.extractLocs(root.getBoard(), s.getBoard(), s.getPlayer()); // The move we have chosen to make
+		
+		
+		// -----------------------------------------------------
+		// CODE BELOW HERE IS FOR ANALYTICS AND TESTING PURPOSES
+		// -----------------------------------------------------
 		System.out.println("\nTIME TAKEN: " + (System.currentTimeMillis()-timer));
 		System.out.println("\nTHE BEST MOVE TO MAKE (H = " + s.getValue() + "):");
 		
