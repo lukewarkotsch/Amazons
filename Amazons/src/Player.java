@@ -1,5 +1,5 @@
 package src;
-public class Test {
+public class Player {
 
 	/**
 	 * @param args
